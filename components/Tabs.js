@@ -8,4 +8,24 @@
 //  Each tab should look like this:
 //    <div class="tab">topic here</div>
 //
-// NOTE: you do _not_ need to install axios as it's included in the HTML via script element
+//( NOTE: you do _not_ need to install axios as it's included in the HTML via script element
+
+classTopics = document.querySelector('.topics');  
+
+function callbackTab(topic) {
+    const tab = document.createElement('div')
+    tab.classList.add('tab');
+    tab.textContent = topic;
+
+    return tab
+}
+
+    axios
+        .get(' https://lambda-times-api.herokuapp.com/topics')
+        .then(res => {
+            res.data.topics.forEach(topic => {
+                classTopics.appendChild(callbackTab(topic))
+               
+            })
+                });
+
