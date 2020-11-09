@@ -12,7 +12,7 @@
 
 classTopics = document.querySelector('.topics');  
 
-function callback(topic) {
+function callbackTab(topic) {
     const tab = document.createElement('div')
     tab.classList.add('tab');
     tab.textContent = topic;
@@ -20,12 +20,11 @@ function callback(topic) {
     return tab
 }
 
-
     axios
         .get(' https://lambda-times-api.herokuapp.com/topics')
         .then(res => {
             res.data.topics.forEach(topic => {
-                classTopics.appendChild(callback(topic))
+                classTopics.appendChild(callbackTab(topic))
                
             })
                 });
